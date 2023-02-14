@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           BetterChatGPT
 // @namespace      https://github.com/optionsx
-// @version        1.0.1
+// @version        1.0.2
 // @author         https://github.com/optionsx
 // @description    detects if chatgpt needs refresh, access to chatgpt while down, favicon based on status
 // @grant          GM.xmlHttpRequest
@@ -60,7 +60,9 @@ async function detectReload() {
   try {
     const resp = await fetch("https://chat.openai.com/api/auth/session")
     console.log(resp?.status === 403 ? "reload" : "no reload");
+    // copy to clipboard triggerPoint.value
     if (resp?.status !== 403) return
+    copy(triggerPoint.value);
     changeFavicon("yellow");
     location.reload();
   } catch { }
