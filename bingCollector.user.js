@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         BingCollector
-// @version      0.7
+// @version      0.8
 // @namespace    optionsx
 // @description  get bingchat faster, earn points everyday
 // @author       github.com/optionsx
@@ -10,6 +10,8 @@
 // @grant        GM.getValue
 // @grant        GM_openInTab
 // @grant        GM.openInTab
+// @updateURL    https://raw.githubusercontent.com/optionsx/bingCollector/main/bingCollector.user.js
+// @downloadURL  https://raw.githubusercontent.com/optionsx/bingCollector/main/bingCollector.user.js
 // @license MIT
 // ==/UserScript==
 
@@ -81,4 +83,4 @@ alert("testttttt")
     //     }
     // }
 
-// }) ();
+}) ();
