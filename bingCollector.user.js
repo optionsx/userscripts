@@ -15,7 +15,7 @@
 // @license MIT
 // ==/UserScript==
 
-alert("testttttt")
+alert("tessssssssssssssss1212121")
 // (async () => {
 //     const day = new Date().getDay();
 //     if (await GM.getValue("count") === undefined) await GM.setValue("count", 0);
