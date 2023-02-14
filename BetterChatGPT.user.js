@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           BetterChatGPT
 // @namespace      https://github.com/optionsx
-// @version        0.8
+// @version        1.0.1
 // @author         https://github.com/optionsx
 // @description    detects if chatgpt needs refresh, access to chatgpt while down, favicon based on status
 // @grant          GM.xmlHttpRequest
