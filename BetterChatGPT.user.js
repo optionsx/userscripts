@@ -7,6 +7,8 @@
 // @grant          GM.xmlHttpRequest
 // @match          https://chat.openai.com/*
 // @icon           https://www.google.com/s2/favicons?sz=64&domain=openai.com
+// @updateURL      https://github.com/optionsx/userscripts/raw/master/BetterChatGPT.user.js
+// @downloadURL    https://github.com/optionsx/userscripts/raw/master/BetterChatGPT.user.js
 // @license MIT
 // ==/UserScript==
 // check out TheTerrasque extension: https://github.com/TheTerrasque/chatgpt-firefox-extension
