@@ -10,8 +10,8 @@
 // @grant        GM.getValue
 // @grant        GM_openInTab
 // @grant        GM.openInTab
-// @updateURL    https://raw.githubusercontent.com/optionsx/bingCollector/main/bingCollector.user.js
-// @downloadURL  https://raw.githubusercontent.com/optionsx/bingCollector/main/bingCollector.user.js
+// @updateURL    https://github.com/optionsx/userscripts/raw/master/bingCollector.user.js
+// @downloadURL  https://github.com/optionsx/userscripts/raw/master/bingCollector.user.js
 // @license MIT
 // ==/UserScript==
 
