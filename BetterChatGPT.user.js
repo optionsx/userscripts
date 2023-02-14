@@ -58,8 +58,8 @@ async function detectReload() {
   try {
     const resp = await fetch("https://chat.openai.com/api/auth/session", {
       method: "GET",
-    }).then((res) => res.json());
-    console.log(resp);
+    })
+    console.log(resp.status);
     if (resp?.status === 403) {
       changeFavicon("yellow");
       location.reload();
