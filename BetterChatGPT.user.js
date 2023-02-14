@@ -58,14 +58,11 @@ triggerPoint.addEventListener("click", detectReload);
 triggerPoint.addEventListener("mousemove", () => triggerPoint.focus());
 async function detectReload() {
   try {
-    const resp = await fetch("https://chat.openai.com/api/auth/session", {
-      method: "GET",
-    })
-    console.log(resp.status);
-    if (resp?.status === 403) {
-      changeFavicon("yellow");
-      location.reload();
-    }
+    const resp = await fetch("https://chat.openai.com/api/auth/session")
+    console.log(resp?.status === 403 ? "reload" : "no reload");
+    if (resp?.status !== 403) return
+    changeFavicon("yellow");
+    location.reload();
   } catch { }
 }
 
