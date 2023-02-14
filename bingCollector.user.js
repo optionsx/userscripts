@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         BingCollector
-// @version      0.9
+// @version      1.0
 // @namespace    optionsx
 // @description  get bingchat faster, earn points everyday
 // @author       github.com/optionsx
