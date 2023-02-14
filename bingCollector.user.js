@@ -10,6 +10,7 @@
 // @grant        GM.getValue
 // @grant        GM_openInTab
 // @grant        GM.openInTab
+// @require      file://C:\bingCollector.user.js
 // @license MIT
 // ==/UserScript==
 (async () => {
