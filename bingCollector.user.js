@@ -1,13 +1,11 @@
 // ==UserScript==
 // @name         BingCollector
-// @version      1.2.2
+// @version      1.2.3
 // @namespace    optionsx
 // @description  get bingchat faster, earn points everyday
 // @author       github.com/optionsx
 // @match        https://www.bing.com/
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=bing.com
-// @grant        GM.setValue
-// @grant        GM.getValue
 // @grant        GM_openInTab
 // @grant        GM.openInTab
 // @updateURL    https://github.com/optionsx/userscripts/raw/master/bingCollector.user.js
@@ -36,10 +34,8 @@
         .then((res) => res.json())
         .then((res) => res.activity);
       let url = `https://www.bing.com/search?q=${question}`;
-      let newTab =
-        GM_openInTab(url, { active: false, setParent: true }) ??
-        GM.openInTab(url, { active: false, setParent: true });
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      let newTab = GM_openInTab(url, { active: false, setParent: true });
+      await new Promise((resolve) => setTimeout(resolve, 1500));
       newTab.close();
     }
   } catch (err) {
