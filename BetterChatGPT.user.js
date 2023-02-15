@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           BetterChatGPT
 // @namespace      https://github.com/optionsx
-// @version        1.2.1
+// @version        1.2.2
 // @author         https://github.com/optionsx
 // @description    detects if chatgpt needs refresh, access to chatgpt while down, favicon based on status
 // @grant          GM_setClipboard
@@ -42,10 +42,7 @@ if (document.getElementsByClassName("text-3xl font-medium").length > 0)
   try {
     const resp = await fetch("https://chat.openai.com/api/auth/session");
     console.log(resp.status === 403 ? "Session Expired" : "Session Active");
-    if (resp?.error !== "RefreshAccessTokenError") {
-      accessToken = await resp?.json().then((data) => data?.accessToken);
-      return true;
-    }
+    if (resp?.error !== "RefreshAccessTokenError") return;
     changeFavicon("red");
     alert("Session Expired. Logging out...");
     localStorage.removeItem("__Secure-next-auth.session-token");
