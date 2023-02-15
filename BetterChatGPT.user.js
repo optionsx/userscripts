@@ -107,7 +107,6 @@ setInterval(() => {
     if (document.querySelector("div.px-3").childNodes.length > 1) document.querySelector("div.px-3").childNodes[1].remove() // remove blah blah blah text which don't exist in plus version
     if (document.querySelector(".text-gray-800").childElementCount > 1) document.querySelector(".text-gray-800").lastChild.remove() // unnecessary block of text
     //if (document.querySelector(".text-4xl").textContent === "ChatGPT") document.querySelector(".text-4xl").textContent = 'ChadGPT' // xD
-
   }
   catch (e) { console.log(e); }
 }, 1500);
