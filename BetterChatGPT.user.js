@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name           BetterChatGPT
 // @namespace      https://github.com/optionsx
-// @version        1.0.5
+// @version        1.1.0
 // @author         https://github.com/optionsx
 // @description    detects if chatgpt needs refresh, access to chatgpt while down, favicon based on status
 // @grant          GM_setClipboard
+// @grant          GM_cookie
 // @run-at         document-idle
 // @match          https://chat.openai.com/*
 // @icon           https://www.google.com/s2/favicons?sz=64&domain=openai.com
@@ -14,10 +15,24 @@
 // ==/UserScript==
 // check out TheTerrasque extension: https://github.com/TheTerrasque/chatgpt-firefox-extension
 
-let accessToken = "";
 document.addEventListener("keydown", function (event) {
   if (event.key === " " && event.ctrlKey) {
-    GM_setClipboard(accessToken, alert("accessToken Copied to clipboard!"));
+    if (this.location.href !== "https://chat.openai.com/chat")
+      location.href = "https://chat.openai.com/chat";
+    GM_cookie.list(
+      {
+        url: "https://chat.openai.com/",
+        name: "__Secure-next-auth.session-token",
+      },
+      (cookie, error) => {
+        if (!error)
+          GM_setClipboard(
+            cookie[0].value,
+            alert("SessionToken Copied to clipboard!")
+          );
+        else console.error(error);
+      }
+    );
   }
 });
 // access while down functionality

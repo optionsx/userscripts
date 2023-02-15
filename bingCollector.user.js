@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         BingCollector
-// @version      1.1
+// @version      1.2.1
 // @namespace    optionsx
 // @description  get bingchat faster, earn points everyday
 // @author       github.com/optionsx
@@ -43,6 +43,8 @@
     let newTab =
       GM_openInTab(url, { active: false, setParent: true }) ??
       GM.openInTab(url, { active: false, setParent: true });
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    newTab.close();
   }
 })();
 
