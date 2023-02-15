@@ -7,7 +7,6 @@
 // @match        https://www.bing.com/
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=bing.com
 // @grant        GM_openInTab
-// @grant        GM.openInTab
 // @updateURL    https://github.com/optionsx/userscripts/raw/master/bingCollector.user.js
 // @downloadURL  https://github.com/optionsx/userscripts/raw/master/bingCollector.user.js
 // @license MIT
@@ -58,7 +57,7 @@
 //     for (let i = 0; i < source.FlyoutResult.MorePromotions.length; i++) {
 //         const el = source.FlyoutResult.MorePromotions[i];
 //         if (el.Complete !== true && el.IsRewardable === true) {
-//             const newTab = GM_openInTab(el.DestinationUrl, { active: false, setParent: true }) ?? GM.openInTab(el.DestinationUrl, { active: false, setParent: true })
+//             const newTab = GM_openInTab(el.DestinationUrl, { active: false, setParent: true })
 //             await new Promise((resolve) => setTimeout(resolve, 1500));
 //             newTab.close();
 //         }
@@ -68,7 +67,7 @@
 // for (let i = 0; i < source.FlyoutResult.UserStatus.Counters['PCSearch'].length; i++) {
 //     const el = source.FlyoutResult.UserStatus.Counters['PCSearch'][i];
 //     if (el.Complete !== true && el.IsRewardable === true && el.PromotionType === "Search") {
-//         const newTab = GM_openInTab(el.DestinationUrl, { active: false, setParent: true }) ?? GM.openInTab(el.DestinationUrl, { active: false, setParent: true })
+//         const newTab = GM_openInTab(el.DestinationUrl, { active: false, setParent: true })
 //         await new Promise((resolve) => setTimeout(resolve, 1500));
 //         newTab.close();
 //     }
