@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           BetterChatGPT
 // @namespace      https://github.com/optionsx
-// @version        1.2.0
+// @version        1.2.1
 // @author         https://github.com/optionsx
 // @description    detects if chatgpt needs refresh, access to chatgpt while down, favicon based on status
 // @grant          GM_setClipboard
@@ -17,11 +17,9 @@
 
 document.addEventListener("keydown", function (event) {
   if (event.key === " " && event.ctrlKey) {
-    if (this.location.href !== "https://chat.openai.com/chat")
-      location.href = "https://chat.openai.com/chat";
     GM_cookie.list(
       {
-        url: "https://chat.openai.com/",
+        url: this.location.href,
         name: "__Secure-next-auth.session-token",
       },
       (cookie, error) => {
