@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         BingCollector
-// @version      1.2.4
+// @version      1.2.5
 // @namespace    optionsx
 // @description  get bingchat faster, earn points everyday
 // @author       github.com/optionsx
@@ -13,8 +13,6 @@
 // ==/UserScript==
 (async () => {
   try {
-    let maxSearch;
-    let searchCount;
     const source = await fetch(
       "https://www.bing.com/rewardsapp/flyoutdata?channel=BingFlyout"
     ).then((res) => res?.json());
@@ -28,11 +26,11 @@
       return;
 
     // regex to get max search count && current search count in the source :)
-    if (maxMatch && progressMatch) {
-      maxSearch =
-        source.FlyoutResult.UserStatus.Counters.PCSearch[0].PointProgress;
-      searchCount = FlyoutResult.UserStatus.Counters.PCSearch[0].PointProgress;
-    }
+    const maxSearch =
+      source.FlyoutResult.UserStatus.Counters.PCSearch[0].PointProgressMax;
+    let searchCount =
+      source.FlyoutResult.UserStatus.Counters.PCSearch[0].PointProgress;
+
     // fetch random questions
     while (++searchCount < maxSearch) {
       const question = await fetch("https://www.boredapi.com/api/activity")
