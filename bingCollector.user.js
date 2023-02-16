@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name         BingCollector
-// @version      1.2.5
+// @version      1.2.6
 // @namespace    optionsx
 // @description  get bingchat faster, earn points everyday
 // @author       github.com/optionsx
 // @match        https://www.bing.com/
+// @match        https://www.bing.com/?FORM=*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=bing.com
 // @grant        GM_openInTab
 // @updateURL    https://github.com/optionsx/userscripts/raw/master/bingCollector.user.js
