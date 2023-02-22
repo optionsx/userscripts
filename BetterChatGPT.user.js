@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           BetterChatGPT
 // @namespace      https://github.com/optionsx
-// @version        1.3.1
+// @version        1.3.2
 // @author         https://github.com/optionsx
 // @description    ChatGPT but better!
 // @grant          GM_setClipboard
