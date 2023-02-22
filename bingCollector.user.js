@@ -12,6 +12,7 @@
 // @downloadURL  https://github.com/optionsx/userscripts/raw/master/bingCollector.user.js
 // @license MIT
 // ==/UserScript==
+
 (async () => {
   try {
     const source = await fetch(
