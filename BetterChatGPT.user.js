@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           BetterChatGPT
 // @namespace      https://github.com/optionsx
-// @version        1.3.4
+// @version        1.3.5
 // @author         https://github.com/optionsx
 // @description    ChatGPT but better!
 // @grant          GM_setClipboard
@@ -15,16 +15,14 @@
 // @license MIT
 // ==/UserScript==
 // check out TheTerrasque extension: https://github.com/TheTerrasque/chatgpt-firefox-extension
-if (localStorage.getItem('capacityCounter') === null) {
-  localStorage.setItem('capacityCounter', 0)
-}
+if (localStorage.getItem('capacityCounter') === null) localStorage.setItem('capacityCounter', 0)
 // access while down functionality
 if (document.getElementsByClassName("text-3xl font-medium").length > 0) {
-  localStorage.setItem('capacityCounter', localStorage.getItem('capacityCounter') + 1)
-  if (localStorage.getItem('capacityCounter') > 8) {
+  localStorage.setItem('capacityCounter', parseInt(localStorage.getItem('capacityCounter')) + 1)
+  if (parseInt(localStorage.getItem('capacityCounter')) > 8) {
     localStorage.setItem('capacityCounter', 0)
     alert("after 8 attempts, the server still down. now trying bypass approach...");
-    window.location.href = "https://chatlogin.angryman.repl.co/bypass";
+    return window.location.href = "https://chatlogin.angryman.repl.co/bypass";
   }
   window.location.href = "https://chat.openai.com/";
 }
@@ -50,6 +48,7 @@ document.addEventListener("keydown", function (event) {
 // sessionExpired? logout? functionality
 (async () => {
   try {
+    if (window.location.href !== "https://chat.openai.com/chat" || window.location.href !== "https://chat.openai.com/chat/*") return;
     const resp = await fetch("https://chat.openai.com/api/auth/session");
     console.log(resp.status === 403 ? "Session Expired" : "Session Active");
     if (resp?.error !== "RefreshAccessTokenError") return;
