@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           BetterChatGPT
 // @namespace      https://github.com/optionsx
-// @version        1.3.3
+// @version        1.3.4
 // @author         https://github.com/optionsx
 // @description    ChatGPT but better!
 // @grant          GM_setClipboard
@@ -23,7 +23,6 @@ if (document.getElementsByClassName("text-3xl font-medium").length > 0) {
   localStorage.setItem('capacityCounter', localStorage.getItem('capacityCounter') + 1)
   if (localStorage.getItem('capacityCounter') > 8) {
     localStorage.setItem('capacityCounter', 0)
-    changeFavicon("blue");
     alert("after 8 attempts, the server still down. now trying bypass approach...");
     window.location.href = "https://chatlogin.angryman.repl.co/bypass";
   }
