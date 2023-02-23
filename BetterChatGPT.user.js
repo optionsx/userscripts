@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           BetterChatGPT
 // @namespace      https://github.com/optionsx
-// @version        1.3.5
+// @version        1.3.6
 // @author         https://github.com/optionsx
 // @description    ChatGPT but better!
 // @grant          GM_setClipboard
@@ -22,6 +22,7 @@ if (document.getElementsByClassName("text-3xl font-medium").length > 0) {
   if (parseInt(localStorage.getItem('capacityCounter')) > 8) {
     localStorage.setItem('capacityCounter', 0)
     alert("after 8 attempts, the server still down. now trying bypass approach...");
+
     return window.location.href = "https://chatlogin.angryman.repl.co/bypass";
   }
   window.location.href = "https://chat.openai.com/";
@@ -48,7 +49,7 @@ document.addEventListener("keydown", function (event) {
 // sessionExpired? logout? functionality
 (async () => {
   try {
-    if (window.location.href !== "https://chat.openai.com/chat" || window.location.href !== "https://chat.openai.com/chat/*") return;
+    if (window.location.href !== "https://chat.openai.com/chat" || !window.location.href.includes("https://chat.openai.com/chat/")) return;
     const resp = await fetch("https://chat.openai.com/api/auth/session");
     console.log(resp.status === 403 ? "Session Expired" : "Session Active");
     if (resp?.error !== "RefreshAccessTokenError") return;
@@ -74,6 +75,8 @@ const loophole = setInterval(() => {
 }, 0);
 
 // reload if needed functionality
+// if (window.location.href !== "https://chat.openai.com/chat" || !window.location.href.includes("https://chat.openai.com/chat/")) {
+// }
 const triggerPoint = document.querySelector("textarea"); // "button.absolute" for submit button
 triggerPoint.addEventListener("click", detectReload);
 triggerPoint.addEventListener("mousemove", () => triggerPoint.focus());
