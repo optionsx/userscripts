@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           BetterChatGPT
 // @namespace      https://github.com/optionsx
-// @version        1.3.6
+// @version        1.3.7
 // @author         https://github.com/optionsx
 // @description    ChatGPT but better!
 // @grant          GM_setClipboard
@@ -16,7 +16,7 @@
 // ==/UserScript==
 // check out TheTerrasque extension: https://github.com/TheTerrasque/chatgpt-firefox-extension
 if (localStorage.getItem('capacityCounter') === null) localStorage.setItem('capacityCounter', 0)
-// access while down functionality
+// access while down functionality...
 if (document.getElementsByClassName("text-3xl font-medium").length > 0) {
   localStorage.setItem('capacityCounter', parseInt(localStorage.getItem('capacityCounter')) + 1)
   if (parseInt(localStorage.getItem('capacityCounter')) > 8) {
@@ -46,7 +46,7 @@ document.addEventListener("keydown", function (event) {
   }
 });
 
-// sessionExpired? logout? functionality
+// sessionExpired? then logout functionality...
 (async () => {
   try {
     if (window.location.href !== "https://chat.openai.com/chat" || !window.location.href.includes("https://chat.openai.com/chat/")) return;
@@ -62,7 +62,7 @@ document.addEventListener("keydown", function (event) {
   }
 })();
 
-// remove server-underload yellow warning functionality
+// remove server-underload yellow warning func...
 const loophole = setInterval(() => {
   try {
     if (document.querySelector(".toast-root").dataset.state) {
@@ -74,7 +74,12 @@ const loophole = setInterval(() => {
   } catch { }
 }, 0);
 
-// reload if needed functionality
+
+// click login button func...
+if (document.querySelectorAll('button').length !== 0 && document.querySelectorAll('button')[0].innerText === "Log in")
+  document.querySelectorAll('button')[0].click()
+
+// reload if needed func...
 // if (window.location.href !== "https://chat.openai.com/chat" || !window.location.href.includes("https://chat.openai.com/chat/")) {
 // }
 const triggerPoint = document.querySelector("textarea"); // "button.absolute" for submit button
@@ -94,7 +99,7 @@ async function detectReload() {
   } catch { }
 }
 
-// cache prompt functionality
+// cache prompt func...
 const prompt = localStorage.getItem("prompt");
 if (prompt) {
   document.querySelector("textarea").value = prompt;
@@ -111,14 +116,14 @@ const status = {
   blue: "https://github.com/TheTerrasque/chatgpt-firefox-extension/blob/master/resources/favicon-32x32-blue.png?raw=true",
 };
 
-// change favicon color functionality
+// change favicon color func...
 const changeFavicon = (color) => {
   const icons = document.querySelectorAll("head link[rel='icon']");
   for (let i = 0; i < icons.length; i++) {
     icons[i].href = status[color];
   }
 };
-// some styling functionality
+// some styling func...
 let location = window.location.href;
 const color = ["green", "black", "white", "yellow"];
 setInterval(() => {
