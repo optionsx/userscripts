@@ -22,7 +22,6 @@ if (document.getElementsByClassName("text-3xl font-medium").length > 0) {
   if (parseInt(localStorage.getItem('capacityCounter')) > 8) {
     localStorage.setItem('capacityCounter', 0)
     alert("after 8 attempts, the server still down. now trying bypass approach...");
-
     return window.location.href = "https://chatlogin.angryman.repl.co/bypass";
   }
   window.location.href = "https://chat.openai.com/";
