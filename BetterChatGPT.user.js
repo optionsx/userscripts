@@ -15,20 +15,15 @@
 // @license MIT
 // ==/UserScript==
 // check out TheTerrasque extension: https://github.com/TheTerrasque/chatgpt-firefox-extension
-if (localStorage.getItem("capacityCounter") === null)
-  localStorage.setItem("capacityCounter", 0);
+if (localStorage.getItem('capacityCounter') === null) localStorage.setItem('capacityCounter', 0)
 // access while down functionality...
 if (document.getElementsByClassName("text-3xl font-medium").length > 0) {
-  localStorage.setItem(
-    "capacityCounter",
-    parseInt(localStorage.getItem("capacityCounter")) + 1
-  );
-  if (parseInt(localStorage.getItem("capacityCounter")) > 8) {
-    localStorage.setItem("capacityCounter", 0);
-    alert(
-      "after 8 attempts, the server still down. now trying bypass approach..."
-    );
-    return (window.location.href = "https://chatlogin.angryman.repl.co/bypass");
+  localStorage.setItem('capacityCounter', parseInt(localStorage.getItem('capacityCounter')) + 1)
+  if (parseInt(localStorage.getItem('capacityCounter')) > 8) {
+    localStorage.setItem('capacityCounter', 0)
+    alert("after 8 attempts, the server still down. now trying bypass approach...");
+
+    return window.location.href = "https://chatlogin.angryman.repl.co/bypass";
   }
   window.location.href = "https://chat.openai.com/";
 }
@@ -54,8 +49,7 @@ document.addEventListener("keydown", function (event) {
 // sessionExpired? then logout functionality...
 (async () => {
   try {
-    if (window.location.href.includes("https://chat.openai.com/auth/login"))
-      return;
+    if (window.location.href.includes('https://chat.openai.com/auth/login')) return;
     const resp = await fetch("https://chat.openai.com/api/auth/session");
     console.log(resp.status === 403 ? "Session Expired" : "Session Active");
     if (resp?.error !== "RefreshAccessTokenError") return;
@@ -80,31 +74,23 @@ const loophole = setInterval(() => {
   } catch { }
 }, 0);
 
+
 // click login button func...
-if (
-  document.querySelectorAll("button").length !== 0 &&
-  document.querySelectorAll("button")[0].innerText === "Log in"
-)
-  document.querySelectorAll("button")[0].click();
+if (document.querySelectorAll('button').length !== 0 && document.querySelectorAll('button')[0].innerText === "Log in")
+  document.querySelectorAll('button')[0].click()
 
 // if enter key pressed/clicked, check if session expired...
 if (document.querySelector("textarea") !== null) {
   const triggerPoint = document.querySelector("button.absolute"); // "textarea" for textfield
-  console.log(triggerPoint);
-  const inputField = document.querySelector("textarea");
+  const inputField = document.querySelector('textarea');
 
   triggerPoint.addEventListener("click", detectReload, false);
-  window.addEventListener(
-    "keydown",
-    (event) => event.keyCode === 13 && detectReload(),
-    true
-  );
+  window.addEventListener('keydown', event => event.keyCode === 13 && detectReload(), true);
   triggerPoint.addEventListener("mousemove", () => triggerPoint.focus());
   async function detectReload() {
     try {
       const resp = await fetch("https://chat.openai.com/api/auth/session");
-      if (window.location.href.includes("https://chat.openai.com/auth/login"))
-        return;
+      if (window.location.href.includes("https://chat.openai.com/auth/login")) return;
       console.log(resp.status === 403 ? "Session Expired" : "Session Active");
       if (resp.status !== 403) return "no reload";
       const prompt = document.querySelector("textarea");
@@ -119,13 +105,17 @@ if (document.querySelector("textarea") !== null) {
     }
   }
 
+
   // cache prompt func...
   const prompt = localStorage.getItem("prompt");
-  if (prompt) {
-    document.querySelector("textarea").value = prompt;
-    localStorage.removeItem("prompt");
-    document.querySelector("textarea").focus();
+  setTimeout(() => {
+    if (prompt) {
+      document.querySelector("textarea").value = prompt;
+      localStorage.removeItem("prompt");
+      document.querySelector("textarea").focus();
+    }
   }
+    , 3000);
 }
 const status = {
   yellow:
