@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         BingCollector
-// @version      1.2.6
+// @version      1.2.7
 // @namespace    optionsx
 // @description  get bingchat faster, earn points everyday
 // @author       github.com/optionsx
@@ -21,9 +21,7 @@
 
     if (
       // not logged in or unsupported country
-      source.IsAuthenticated !== true &&
-      source.IsRewardsUser !== true &&
-      source.IsUnsupportedCountry === false
+      source.IsAuthenticated !== true
     )
       return;
 
